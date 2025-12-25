@@ -152,28 +152,6 @@ sudo umount -R /mnt
 
 Connect with nmtui (make sure dbus and networkmanager is running)
 
-Install nvidia:
-
-```
-xi nvidia
-echo 'options nvidia NVreg_EnableGpuFirmware=0' | sudo tee /etc/modprobe.d/nvidia-gsp.conf
-sudo dracut --force && sudo reboot
-```
-
-If brightnessctl need super user:
-
-```
-sudo chmod +s /usr/bin/brightnessctl
-```
-
-Install nix:
-
-```
-xi nix
-sudo ln -s /etc/sv/nix-daemon /var/service/
-sudo sv up nix-daemon
-```
-
 Set up powerprofiles:
 
 ```
@@ -182,7 +160,36 @@ sudo ln -s /etc/sv/power-profiles-daemon /var/service
 sudo sv up power-profiles-daemon
 ```
 
-Set up flatpak:
+Install nvidia:
+
+```
+xi nvidia
+```
+
+If brightnessctl need super user:
+
+```
+sudo chmod +s /usr/bin/brightnessctl
+```
+
+### Misc
+
+Some miscs:
+
+```
+xi imv stow nerd-fonts
+```
+
+
+## Nix:
+
+```
+xi nix
+sudo ln -s /etc/sv/nix-daemon /var/service/
+sudo sv up nix-daemon
+```
+
+## Flatpak:
 
 ```
 xi flatpak
@@ -191,7 +198,7 @@ flatpak --user install flathub app.zen_browser.zen
 flatpak override --user --filesystem=~/Downloads app.zen_browser.zen
 ```
 
-Steam:
+## Steam
 
 ```
 xi MangoHud steam libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit mesa-dri-32bit
@@ -202,3 +209,5 @@ Add this to .steam/steam/steam_dev.cfg
 ```
 unShaderBackgroundProcessingThreads 20
 ```
+
+Launch steam with prime-run if hybrid graphics to avoid issues
