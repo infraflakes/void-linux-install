@@ -190,7 +190,7 @@ xi nvidia nvidia-libs-32bit
 Some miscs:
 
 ```
-xi imv stow nerd-fonts ghostty
+xi imv stow nerd-fonts ghostty obs
 ```
 
 ## Fcitx5
@@ -218,7 +218,7 @@ flatpak override --user --filesystem=~/Downloads app.zen_browser.zen
 ## Steam
 
 ```
-xi MangoHud steam libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit
+xi gamescope MangoHud steam libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit
 ```
 
 Add this to .steam/steam/steam_dev.cfg
@@ -227,4 +227,8 @@ Add this to .steam/steam/steam_dev.cfg
 unShaderBackgroundProcessingThreads 20
 ```
 
-Launch steam with prime-run if hybrid graphics to avoid issues
+Launch with gamescope (to prevent games freezing up because of losing focus):
+
+```
+gamescope -W 1920 -H 1080 -r 144 -- steam
+```
