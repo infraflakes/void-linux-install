@@ -39,11 +39,6 @@ Then install other repo and xtools and editor:
 xbps-install -Su xtools void-repo-multilib void-repo-nonfree neovim fish-shell
 ```
 
-Set fish shell as default:
-```
-chsh -s $(which fish)
-```
-
 Set fastly for other repo:
 
 ```
@@ -115,28 +110,11 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id="Void
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-Enable some services:
-```
-ln -s /etc/sv/polkitd /var/service/
-ln -s /etc/sv/rtkit /var/service/
-ln -s /etc/sv/dbus /var/service/
-ln -s /etc/sv/NetworkManager /var/service/
-```
-
 Set 1.1.1.1 DNS:
 
 ```
 vim /etc/resolv.conf
 nameserver 1.1.1.1
-```
-
-Set up pipewire:
-
-```
-ln -s /etc/sv/elogind /var/service
-mkdir -p /etc/pipewire/pipewire.conf.d
-ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
-ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
 ```
 
 Reconfigure for stability:
@@ -152,6 +130,29 @@ umount -R /mnt
 ```
 
 ### Post install
+
+Set fish shell as main:
+
+```
+chsh -s $(which fish)
+```
+
+Enable some services:
+```
+ln -s /etc/sv/polkitd /var/service/
+ln -s /etc/sv/rtkit /var/service/
+ln -s /etc/sv/dbus /var/service/
+ln -s /etc/sv/NetworkManager /var/service/
+```
+
+Set up pipewire:
+
+```
+ln -s /etc/sv/elogind /var/service
+mkdir -p /etc/pipewire/pipewire.conf.d
+ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
+ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
+```
 
 Connect with nmtui (make sure dbus and networkmanager is running)
 
