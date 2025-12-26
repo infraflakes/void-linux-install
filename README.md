@@ -36,7 +36,7 @@ repository=https://repo-fastly.voidlinux.org/current
 Then install other repo and xtools and editor:
 
 ```
-xbps-install -Su xtools void-repo-multilib void-repo-nonfree neovim fish-shell
+xbps-install -Su xtools void-repo-multilib void-repo-multilib void-repo-nonfree neovim fish-shell
 ```
 
 Set fastly for other repo:
@@ -44,11 +44,11 @@ Set fastly for other repo:
 ```
 cp /usr/share/xbps.d/10-repository-multilib.conf /etc/xbps.d/
 cp /usr/share/xbps.d/10-repository-nonfree.conf /etc/xbps.d/
+cp /usr/share/xbps.d/10-repository-multilib-nonfree.conf /etc/xbps.d/
 
 vim /etc/xbps.d/10-repository-multilib.conf
-repository=https://repo-fastly.voidlinux.org/current/multilib
+vim /etc/xbps.d/10-repository-multilib-nonfree.conf
 vim /etc/xbps.d/10-repository-nonfree.conf
-repository=https://repo-fastly.voidlinux.org/current/nonfree
 ```
 
 ### Setting up other essentials:
@@ -167,7 +167,7 @@ sudo sv up power-profiles-daemon
 Install nvidia:
 
 ```
-xi nvidia
+xi nvidia nvidia-libs-32bit
 ```
 
 If brightnessctl need super user:
