@@ -230,5 +230,5 @@ unShaderBackgroundProcessingThreads 20
 Launch with gamescope (to prevent games freezing up because of losing focus):
 
 ```
-gamescope -W 1920 -H 1080 -r 144 -- steam
+GBM_BACKEND=nvidia-drm gamescope --force-grab-cursor -W 1920 -H 1080 -r 144 -- steam
 ```
