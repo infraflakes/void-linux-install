@@ -184,6 +184,10 @@ Some miscs:
 xi imv stow nerd-fonts ghostty
 ```
 
+## Fcitx5
+```
+xi fcitx5 fcitx5-configtool fcitx5-gtk fcitx5-unikey
+```
 
 ## Nix:
 
