@@ -99,7 +99,7 @@ passwd nixuris
 install some basic pkgs:
 
 ```
-xi pipewire elogind base-devel curl wget brightnessctl grub efibootmgr dbus polkit rtkit xorg xinit NetworkManager fastfetch
+xi pipewire elogind base-devel curl wget brightnessctl grub efibootmgr dbus polkit rtkit xorg xinit NetworkManager fastfetch grub-x86_64-efi
 ```
 
 Edit sudoer:
@@ -111,7 +111,6 @@ EDITOR=vim visudo
 Install grub:
 
 ```
-xbps-install -S grub-x86_64-efi
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id="Void"
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
