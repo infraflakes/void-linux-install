@@ -94,7 +94,7 @@ passwd nixuris
 install some basic pkgs:
 
 ```
-xi pipewire elogind base-devel curl wget brightnessctl grub efibootmgr dbus polkit rtkit xorg xinit NetworkManager fastfetch grub-x86_64-efi
+xi yazi pipewire elogind base-devel curl wget brightnessctl grub efibootmgr dbus polkit rtkit xorg xinit NetworkManager fastfetch grub-x86_64-efi
 ```
 
 Edit sudoer:
@@ -108,13 +108,6 @@ Install grub:
 ```
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id="Void"
 grub-mkconfig -o /boot/grub/grub.cfg
-```
-
-Set 1.1.1.1 DNS:
-
-```
-vim /etc/resolv.conf
-nameserver 1.1.1.1
 ```
 
 Reconfigure for stability:
@@ -135,6 +128,13 @@ Set fish shell as main:
 
 ```
 chsh -s $(which fish)
+```
+
+Set 1.1.1.1 DNS:
+
+```
+vim /etc/resolv.conf
+nameserver 1.1.1.1
 ```
 
 Enable some services:
