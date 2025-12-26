@@ -181,7 +181,7 @@ sudo chmod +s /usr/bin/brightnessctl
 Some miscs:
 
 ```
-xi imv stow nerd-fonts
+xi imv stow nerd-fonts ghostty
 ```
 
 
