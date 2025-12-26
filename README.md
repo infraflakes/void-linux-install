@@ -94,7 +94,7 @@ passwd nixuris
 install some basic pkgs:
 
 ```
-xi yazi pipewire elogind base-devel curl wget brightnessctl grub efibootmgr dbus polkit rtkit xorg xinit NetworkManager fastfetch grub-x86_64-efi
+xi yazi pipewire elogind base-devel curl wget brightnessctl grub efibootmgr dbus polkit rtkit xorg xinit NetworkManager fastfetch grub-x86_64-efi cronie
 ```
 
 Edit sudoer:
@@ -139,22 +139,37 @@ nameserver 1.1.1.1
 
 Enable some services:
 ```
-ln -s /etc/sv/polkitd /var/service/
-ln -s /etc/sv/rtkit /var/service/
-ln -s /etc/sv/dbus /var/service/
-ln -s /etc/sv/NetworkManager /var/service/
+sudo ln -s /etc/sv/polkitd /var/service/
+sudo ln -s /etc/sv/rtkit /var/service/
+sudo ln -s /etc/sv/dbus /var/service/
+sudo ln -s /etc/sv/NetworkManager /var/service/
+sudo ln -s /etc/sv/cronie /var/service/
 ```
 
 Set up pipewire:
 
 ```
-ln -s /etc/sv/elogind /var/service
+sudo ln -s /etc/sv/elogind /var/service
 mkdir -p /etc/pipewire/pipewire.conf.d
-ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
-ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
+sudo ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
+sudo ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
 ```
 
 Connect with nmtui (make sure dbus and networkmanager is running)
+
+Set up trim:
+
+```
+sudo tee /etc/cron.weekly/fstrim <<'EOF'
+#!/bin/sh
+# Periodic SSD TRIM
+/usr/sbin/fstrim -A
+EOF
+```
+
+```
+sudo chmod +x /etc/cron.weekly/fstrim
+```
 
 Set up powerprofiles:
 
@@ -168,12 +183,6 @@ Install nvidia:
 
 ```
 xi nvidia nvidia-libs-32bit
-```
-
-If brightnessctl need super user:
-
-```
-sudo chmod +s /usr/bin/brightnessctl
 ```
 
 ### Misc
