@@ -205,7 +205,7 @@ flatpak override --user --filesystem=~/Downloads app.zen_browser.zen
 ## Steam
 
 ```
-xi MangoHud steam libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit mesa-dri-32bit
+xi MangoHud steam libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit
 ```
 
 Add this to .steam/steam/steam_dev.cfg
